@@ -1,0 +1,33 @@
+#black {
+    background-color: white;
+}
+
+#black:hover {
+    background-color: black;
+}
+
+#text {
+    color: black;
+}
+
+.box {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.transition {
+    transition: all;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.big {
+    width: 100px;
+    height: 100px;
+}

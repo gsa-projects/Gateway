@@ -1,0 +1,8 @@
+#black {
+    background: linear-gradient(to bottom, #425fae 0%, #488aab 100%);
+    color: #ffffff;
+
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
