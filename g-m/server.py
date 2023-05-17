@@ -30,7 +30,7 @@ else:
     app.config.update(test_config)
 
 # 데이터 베이스와 연동해준다.
-database = create_engine(app.config['DB_URL'], encoding = 'utf-8', max_overflow = 0)
+database = create_engine(app.config['DB_URL']   , encoding = 'utf-8', max_overflow = 0)
 app.database = database
 
 app.config["SECRET_KEY"] = "secret" #데이터 베이스 접속을 위해 꼭 필요한 암호키, 설정이 안되어 있으면 보안 문제로 오류가 뜬다.

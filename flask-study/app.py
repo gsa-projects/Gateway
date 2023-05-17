@@ -24,5 +24,9 @@ def div(numbers):
     numbers = list(map(int, numbers.split(',')))
     return f'{reduce(lambda x, y: x / y, numbers)}'
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
