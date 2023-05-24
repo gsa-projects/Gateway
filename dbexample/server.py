@@ -2,15 +2,23 @@ from flask import Flask, render_template, current_app
 from sqlalchemy import create_engine,text
 
 def noticeloader():
-    sqltext="SELECT * from notice;"
-    return current_app.database.execute(text(sqltext)) #sqltext를 데이터베이스에서 실행하고 그 결과를 반환한다.
+    sqltext = "SELECT * FROM actor;"
+
+    with current_app.database.connect() as connection:
+        result = connection.execute(text(sqltext))
+        return result
 
 def noticedeleter(title):
-    sqltext="delete from notice where title='"+str(title)+"';"
-    return current_app.database.execute(text(sqltext))
+    sqltext = f"DELETE FROM actor WHERE title='{title}';"
 
-def noticeuploader(databasein):#databasein에는 4개의 값이 행렬로 들어가 있음
-    current_app.database.execute("insert into studentlist(stname,schoolnum,phonenum,easteregg) values(%s,%s,%s,%s);",databasein) #굳이 반환이 필요없으면 이렇게 해도 된다.
+    with current_app.database.connect() as connection:
+        result = connection.execute(text(sqltext))
+        return result
+
+# def noticeuploader(databasein):
+#     with current_app.database.connect() as connection:
+#         result = connection.execute(text("insert into studentlist(stname,schoolnum,phonenum,easteregg) values(%s,%s,%s,%s);"),databasein)
+#     current_app.database.execute("insert into studentlist(stname,schoolnum,phonenum,easteregg) values(%s,%s,%s,%s);",databasein) #굳이 반환이 필요없으면 이렇게 해도 된다.
     
 #그리고 절대    
 def noticeuploader(title,writer,summarize,maintext):
@@ -30,7 +38,8 @@ else:
     app.config.update(test_config)
 
 # 데이터 베이스와 연동해준다.
-database = create_engine(app.config['DB_URL']   , encoding = 'utf-8', max_overflow = 0)
+# database = create_engine(app.config['DB_URL']+'?charset=utf8mb4', max_overflow=0)
+database = create_engine(app.config['DB_URL'], max_overflow=0)
 app.database = database
 
 app.config["SECRET_KEY"] = "secret" #데이터 베이스 접속을 위해 꼭 필요한 암호키, 설정이 안되어 있으면 보안 문제로 오류가 뜬다.
