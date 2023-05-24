@@ -12,7 +12,7 @@ def noticedeleter(title):
 def noticeuploader(databasein):#databasein에는 4개의 값이 행렬로 들어가 있음
     current_app.database.execute("insert into studentlist(stname,schoolnum,phonenum,easteregg) values(%s,%s,%s,%s);",databasein) #굳이 반환이 필요없으면 이렇게 해도 된다.
     
-#그리고 절대 
+#그리고 절대    
 def noticeuploader(title,writer,summarize,maintext):
     sqltext="INSERT INTO notice(title,writer,summarize,maintext,uploadate) values('"+str(title)+"','"+str(writer)+"','"+str(summarize)+"','"+str(maintext)+"','"+"2023-05-12"+"');"
     return current_app.database.execute(text(sqltext))
