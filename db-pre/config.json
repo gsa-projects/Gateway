@@ -1,0 +1,9 @@
+{
+    "user": "root",
+    "password": "[password]",
+    "database": "sakila",
+
+    "secret_key": "secret",
+    "host": "localhost",
+    "port": 3306
+}

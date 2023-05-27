@@ -10,19 +10,17 @@
     <table>
         <tr>
         {% for name in column_names %}
-            <th>{{name}}</th>
+          <th>{{name}}</th>
         {% endfor %}
         </tr>
-        <tr>
         {% for x in data %}
         <tr>
-            <td>{{x[0]}}</td>
-            <td>{{x[1]}}</td>
-            <td>{{x[2]}}</td>
-            <td>{{x[3]}}</td>
+          <td>{{x[0]}}</td>
+          <td>{{x[1]}}</td>
+          <td>{{x[2]}}</td>
+          <td>{{x[3]}}</td>
         </tr>
         {% endfor %}
-        </tr>
-    </table>
+      </table>
 </body>
 </html>

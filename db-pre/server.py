@@ -13,7 +13,7 @@ def do(sqltext):
     with current_app.database.connect() as connection:
         result = connection.execute(text(sqltext))
         return result
-    
+
 app = Flask(__name__)
 app.config.from_file('config.json', load=json.load)
 database = create_engine(DB_URL, max_overflow=0)
@@ -22,7 +22,7 @@ app.database = database
 @app.route('/')
 def index():
     column_names = [column[0] for column in do("DESCRIBE actor;")]
-    data = [*do('SELECT * FROM actor LIMIT 100;')]
+    data = [*do('SELECT * FROM actor;')]
 
     return render_template('index.html', column_names=column_names, data=data)
 
